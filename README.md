@@ -2,7 +2,6 @@
 
 **An AI welfare navigator.** Yojana Mitra finds the government schemes a citizen is eligible for, explains *why* (including "near misses"), reads their documents to fill in the profile, and answers questions by voice in Hindi or English.
 
-> Built for NITSHACKS 9.0 by Team Ethanol. Inspired by MySarkar by Team AKAASHVANI (MIT License, © 2025 Koustav Bera).
 
 ## What works today (prototype)
 
