@@ -1,0 +1,31 @@
+# dependencies
+node_modules/
+.venv/
+venv/
+__pycache__/
+*.pyc
+
+# builds
+dist/
+build/
+.pytest_cache/
+
+# env / secrets
+.env
+.env.local
+*.pem
+
+# uploads / runtime data
+uploads/
+*.log
+
+# editors / OS
+.vscode/*
+!.vscode/extensions.json
+.idea/
+.DS_Store
+Thumbs.db
+
+CLAUDE.md
+
+docs/
