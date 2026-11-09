@@ -1,0 +1,503 @@
+[
+  {
+    "slug": "pm-kisan",
+    "name": "PM-KISAN Samman Nidhi",
+    "ministry": "Ministry of Agriculture & Farmers Welfare",
+    "categories": ["agriculture"],
+    "lifeEvents": ["farming"],
+    "description": "Direct income support to landholding farmer families, paid in three instalments a year into the bank account.",
+    "benefit": { "amount": 6000, "frequency": "yearly", "summary": "₹6,000 per year in three instalments of ₹2,000" },
+    "rules": [
+      { "field": "occupation", "op": "in", "value": ["farmer"], "label": "Works as a farmer" },
+      { "field": "landHoldingAcres", "op": "gte", "value": 0.01, "label": "Family owns cultivable land" },
+      { "field": "paysIncomeTax", "op": "eq", "value": false, "label": "Does not pay income tax" },
+      { "field": "isGovtEmployee", "op": "eq", "value": false, "label": "Not a government employee" }
+    ],
+    "alsoCheck": ["Land must be recorded in the family's name in state land records", "Professionals such as doctors, lawyers and CAs are excluded"],
+    "documents": ["Aadhaar", "Land ownership records", "Bank account linked to Aadhaar"],
+    "applyUrl": "https://pmkisan.gov.in"
+  },
+  {
+    "slug": "pm-kisan-maandhan",
+    "name": "PM Kisan Maandhan Yojana",
+    "ministry": "Ministry of Agriculture & Farmers Welfare",
+    "categories": ["agriculture", "pension"],
+    "lifeEvents": ["farming", "old_age"],
+    "description": "Voluntary, contributory pension scheme for small and marginal farmers. The government matches the farmer's monthly contribution.",
+    "benefit": { "amount": null, "frequency": null, "summary": "₹3,000 per month pension after age 60" },
+    "rules": [
+      { "field": "occupation", "op": "in", "value": ["farmer"], "label": "Works as a farmer" },
+      { "field": "age", "op": "between", "value": [18, 40], "label": "Age 18 to 40 when joining" },
+      { "field": "landHoldingAcres", "op": "lte", "value": 4.94, "label": "Owns up to 2 hectares (about 4.94 acres)" }
+    ],
+    "alsoCheck": ["Not covered by NPS, ESIC or EPFO"],
+    "documents": ["Aadhaar", "Savings bank account", "Land records"],
+    "applyUrl": "https://maandhan.in"
+  },
+  {
+    "slug": "pm-fasal-bima",
+    "name": "Pradhan Mantri Fasal Bima Yojana",
+    "ministry": "Ministry of Agriculture & Farmers Welfare",
+    "categories": ["agriculture", "insurance"],
+    "lifeEvents": ["farming"],
+    "description": "Crop insurance against loss from natural calamities, pests and diseases, with a low premium paid by the farmer.",
+    "benefit": { "amount": null, "frequency": null, "summary": "Crop insurance at 2% premium (kharif), 1.5% (rabi), 5% (commercial/horticulture)" },
+    "rules": [
+      { "field": "occupation", "op": "in", "value": ["farmer"], "label": "Works as a farmer (owner or tenant)" }
+    ],
+    "alsoCheck": ["Crop must be notified for your area and season"],
+    "documents": ["Aadhaar", "Land records or tenancy agreement", "Sowing certificate", "Bank account"],
+    "applyUrl": "https://pmfby.gov.in"
+  },
+  {
+    "slug": "pm-kusum",
+    "name": "PM-KUSUM (Solar Pumps for Farmers)",
+    "ministry": "Ministry of New and Renewable Energy",
+    "categories": ["agriculture", "energy"],
+    "lifeEvents": ["farming"],
+    "description": "Subsidy for installing standalone solar pumps and solarising existing grid-connected agricultural pumps.",
+    "benefit": { "amount": null, "frequency": null, "summary": "Central and state subsidy on solar irrigation pumps" },
+    "rules": [
+      { "field": "occupation", "op": "in", "value": ["farmer"], "label": "Works as a farmer" }
+    ],
+    "alsoCheck": ["Subsidy share and process differ by state"],
+    "documents": ["Aadhaar", "Land records", "Bank account"],
+    "applyUrl": "https://pmkusum.mnre.gov.in"
+  },
+  {
+    "slug": "kisan-credit-card",
+    "name": "Kisan Credit Card",
+    "ministry": "Ministry of Agriculture & Farmers Welfare",
+    "categories": ["agriculture", "finance"],
+    "lifeEvents": ["farming"],
+    "description": "Short-term credit for crop cultivation, post-harvest expenses and allied activities at a subsidised interest rate.",
+    "benefit": { "amount": null, "frequency": null, "summary": "Crop loans at subsidised interest with prompt-repayment incentive" },
+    "rules": [
+      { "field": "occupation", "op": "in", "value": ["farmer"], "label": "Works as a farmer, tenant farmer or sharecropper" },
+      { "field": "age", "op": "gte", "value": 18, "label": "Age 18 or above" }
+    ],
+    "alsoCheck": [],
+    "documents": ["Aadhaar", "Land records", "Passport photo"],
+    "applyUrl": "https://www.myscheme.gov.in"
+  },
+  {
+    "slug": "pmmvy",
+    "name": "Pradhan Mantri Matru Vandana Yojana",
+    "ministry": "Ministry of Women and Child Development",
+    "categories": ["women", "health"],
+    "lifeEvents": ["pregnancy", "new_baby"],
+    "description": "Cash incentive for pregnant women and new mothers to support nutrition and rest during pregnancy and after childbirth.",
+    "benefit": { "amount": 5000, "frequency": "one_time", "summary": "₹5,000 for the first child; ₹6,000 for a second child if she is a girl" },
+    "rules": [
+      { "field": "gender", "op": "eq", "value": "female", "label": "Woman" },
+      { "field": "isPregnantOrNewMother", "op": "eq", "value": true, "label": "Pregnant or a new mother" },
+      { "field": "isGovtEmployee", "op": "eq", "value": false, "label": "Not a regular government employee" }
+    ],
+    "alsoCheck": ["Pregnancy must be registered at an Anganwadi or health facility"],
+    "documents": ["Aadhaar", "MCP card", "Bank or post office account"],
+    "applyUrl": "https://pmmvy.wcd.gov.in"
+  },
+  {
+    "slug": "janani-suraksha",
+    "name": "Janani Suraksha Yojana",
+    "ministry": "Ministry of Health and Family Welfare",
+    "categories": ["women", "health"],
+    "lifeEvents": ["pregnancy", "new_baby"],
+    "description": "Cash assistance to promote safe delivery in a hospital or health centre.",
+    "benefit": { "amount": 1400, "frequency": "one_time", "summary": "Up to ₹1,400 (rural) or ₹1,000 (urban) in low-performing states; lower amounts in other states" },
+    "rules": [
+      { "field": "gender", "op": "eq", "value": "female", "label": "Woman" },
+      { "field": "isPregnantOrNewMother", "op": "eq", "value": true, "label": "Pregnant" },
+      {
+        "anyOf": [
+          { "field": "isBPL", "op": "eq", "value": true, "label": "BPL household" },
+          { "field": "category", "op": "in", "value": ["sc", "st"], "label": "SC or ST" }
+        ],
+        "label": "From a BPL household, or SC/ST"
+      }
+    ],
+    "alsoCheck": ["Delivery must be in a government or accredited private facility"],
+    "documents": ["Aadhaar", "MCP card", "BPL or caste certificate", "Bank account"],
+    "applyUrl": "https://nhm.gov.in"
+  },
+  {
+    "slug": "ab-pmjay",
+    "name": "Ayushman Bharat PM-JAY",
+    "ministry": "Ministry of Health and Family Welfare",
+    "categories": ["health", "insurance"],
+    "lifeEvents": ["illness"],
+    "description": "Free hospital treatment at empanelled public and private hospitals for eligible poor and vulnerable families.",
+    "benefit": { "amount": 500000, "frequency": "cover", "summary": "Health cover of ₹5 lakh per family per year" },
+    "rules": [
+      { "field": "isBPL", "op": "eq", "value": true, "label": "Poor or deprived household (BPL used as a stand-in for the SECC list)" }
+    ],
+    "alsoCheck": ["Family must be in the SECC 2011 list or the state's beneficiary list"],
+    "documents": ["Aadhaar", "Ration card"],
+    "applyUrl": "https://beneficiary.nha.gov.in"
+  },
+  {
+    "slug": "ab-pmjay-senior",
+    "name": "Ayushman Vay Vandana (PM-JAY for 70+)",
+    "ministry": "Ministry of Health and Family Welfare",
+    "categories": ["health", "insurance", "senior"],
+    "lifeEvents": ["old_age", "illness"],
+    "description": "Health cover for every senior citizen aged 70 or above, regardless of income.",
+    "benefit": { "amount": 500000, "frequency": "cover", "summary": "Health cover of ₹5 lakh per year, regardless of income" },
+    "rules": [
+      { "field": "age", "op": "gte", "value": 70, "label": "Age 70 or above" }
+    ],
+    "alsoCheck": [],
+    "documents": ["Aadhaar"],
+    "applyUrl": "https://beneficiary.nha.gov.in"
+  },
+  {
+    "slug": "pmay-gramin",
+    "name": "Pradhan Mantri Awas Yojana – Gramin",
+    "ministry": "Ministry of Rural Development",
+    "categories": ["housing"],
+    "lifeEvents": ["new_house"],
+    "description": "Financial assistance to build a pucca house for rural families who are homeless or live in kutcha houses.",
+    "benefit": { "amount": 120000, "frequency": "one_time", "summary": "₹1.2 lakh (plains) or ₹1.3 lakh (hilly states) to build a house" },
+    "rules": [
+      { "field": "area", "op": "eq", "value": "rural", "label": "Lives in a rural area" },
+      { "field": "ownsPuccaHouse", "op": "eq", "value": false, "label": "Does not own a pucca house" },
+      { "field": "isBPL", "op": "eq", "value": true, "label": "Poor household (BPL)" }
+    ],
+    "alsoCheck": ["Selection is from the Awaas+ survey and gram sabha verification"],
+    "documents": ["Aadhaar", "Job card (MGNREGA)", "Bank account"],
+    "applyUrl": "https://pmayg.nic.in"
+  },
+  {
+    "slug": "pmay-urban",
+    "name": "Pradhan Mantri Awas Yojana – Urban 2.0",
+    "ministry": "Ministry of Housing and Urban Affairs",
+    "categories": ["housing"],
+    "lifeEvents": ["new_house"],
+    "description": "Assistance to urban poor families to build or buy their first pucca house.",
+    "benefit": { "amount": 250000, "frequency": "one_time", "summary": "Up to ₹2.5 lakh assistance for EWS families" },
+    "rules": [
+      { "field": "area", "op": "eq", "value": "urban", "label": "Lives in an urban area" },
+      { "field": "ownsPuccaHouse", "op": "eq", "value": false, "label": "Does not own a pucca house anywhere in India" },
+      { "field": "annualIncome", "op": "lte", "value": 300000, "label": "Family income up to ₹3 lakh a year (EWS)" }
+    ],
+    "alsoCheck": ["LIG and MIG families (up to ₹9 lakh) may get an interest subsidy instead"],
+    "documents": ["Aadhaar", "Income certificate", "Bank account"],
+    "applyUrl": "https://pmay-urban.gov.in"
+  },
+  {
+    "slug": "pm-ujjwala",
+    "name": "Pradhan Mantri Ujjwala Yojana",
+    "ministry": "Ministry of Petroleum and Natural Gas",
+    "categories": ["women", "energy"],
+    "lifeEvents": [],
+    "description": "Free LPG connection for women from poor households, replacing firewood and other unclean cooking fuels.",
+    "benefit": { "amount": null, "frequency": null, "summary": "Free LPG connection with first refill and stove support" },
+    "rules": [
+      { "field": "gender", "op": "eq", "value": "female", "label": "Woman" },
+      { "field": "age", "op": "gte", "value": 18, "label": "Age 18 or above" },
+      { "field": "isBPL", "op": "eq", "value": true, "label": "Poor household (BPL)" }
+    ],
+    "alsoCheck": ["No existing LPG connection in the household"],
+    "documents": ["Aadhaar", "Ration card", "Bank account"],
+    "applyUrl": "https://www.pmuy.gov.in"
+  },
+  {
+    "slug": "nsap-old-age-pension",
+    "name": "Indira Gandhi National Old Age Pension",
+    "ministry": "Ministry of Rural Development",
+    "categories": ["pension", "senior"],
+    "lifeEvents": ["old_age"],
+    "description": "Monthly pension for elderly people from poor households under the National Social Assistance Programme.",
+    "benefit": { "amount": 200, "frequency": "monthly", "summary": "₹200/month (age 60–79), ₹500/month (80+) central share; many states add more" },
+    "rules": [
+      { "field": "age", "op": "gte", "value": 60, "label": "Age 60 or above" },
+      { "field": "isBPL", "op": "eq", "value": true, "label": "Poor household (BPL)" }
+    ],
+    "alsoCheck": [],
+    "documents": ["Aadhaar", "Age proof", "BPL card", "Bank account"],
+    "applyUrl": "https://nsap.nic.in"
+  },
+  {
+    "slug": "nsap-widow-pension",
+    "name": "Indira Gandhi National Widow Pension",
+    "ministry": "Ministry of Rural Development",
+    "categories": ["pension", "women"],
+    "lifeEvents": ["widowed"],
+    "description": "Monthly pension for widows from poor households.",
+    "benefit": { "amount": 300, "frequency": "monthly", "summary": "₹300/month central share; many states add more" },
+    "rules": [
+      { "field": "gender", "op": "eq", "value": "female", "label": "Woman" },
+      { "field": "maritalStatus", "op": "eq", "value": "widowed", "label": "Widow" },
+      { "field": "age", "op": "between", "value": [40, 79], "label": "Age 40 to 79" },
+      { "field": "isBPL", "op": "eq", "value": true, "label": "Poor household (BPL)" }
+    ],
+    "alsoCheck": [],
+    "documents": ["Aadhaar", "Husband's death certificate", "BPL card", "Bank account"],
+    "applyUrl": "https://nsap.nic.in"
+  },
+  {
+    "slug": "nsap-disability-pension",
+    "name": "Indira Gandhi National Disability Pension",
+    "ministry": "Ministry of Rural Development",
+    "categories": ["pension", "disability"],
+    "lifeEvents": ["disability"],
+    "description": "Monthly pension for people with severe or multiple disabilities from poor households.",
+    "benefit": { "amount": 300, "frequency": "monthly", "summary": "₹300/month central share; many states add more" },
+    "rules": [
+      { "field": "hasDisability", "op": "eq", "value": true, "label": "Person with disability" },
+      { "field": "age", "op": "between", "value": [18, 79], "label": "Age 18 to 79" },
+      { "field": "isBPL", "op": "eq", "value": true, "label": "Poor household (BPL)" }
+    ],
+    "alsoCheck": ["Disability of 80% or more"],
+    "documents": ["Aadhaar", "Disability certificate", "BPL card", "Bank account"],
+    "applyUrl": "https://nsap.nic.in"
+  },
+  {
+    "slug": "post-matric-sc",
+    "name": "Post-Matric Scholarship for SC Students",
+    "ministry": "Ministry of Social Justice and Empowerment",
+    "categories": ["education"],
+    "lifeEvents": ["college"],
+    "description": "Scholarship for Scheduled Caste students studying after Class 10, covering fees and an academic allowance.",
+    "benefit": { "amount": null, "frequency": "yearly", "summary": "Compulsory fees plus a yearly academic allowance" },
+    "rules": [
+      { "field": "category", "op": "in", "value": ["sc"], "label": "Scheduled Caste (SC)" },
+      { "field": "occupation", "op": "in", "value": ["student"], "label": "Currently a student (after Class 10)" },
+      { "field": "annualIncome", "op": "lte", "value": 250000, "label": "Family income up to ₹2.5 lakh a year" }
+    ],
+    "alsoCheck": [],
+    "documents": ["Aadhaar", "Caste certificate", "Income certificate", "Previous marksheet", "Fee receipt"],
+    "applyUrl": "https://scholarships.gov.in"
+  },
+  {
+    "slug": "post-matric-st",
+    "name": "Post-Matric Scholarship for ST Students",
+    "ministry": "Ministry of Tribal Affairs",
+    "categories": ["education"],
+    "lifeEvents": ["college"],
+    "description": "Scholarship for Scheduled Tribe students studying after Class 10.",
+    "benefit": { "amount": null, "frequency": "yearly", "summary": "Compulsory fees plus a yearly maintenance allowance" },
+    "rules": [
+      { "field": "category", "op": "in", "value": ["st"], "label": "Scheduled Tribe (ST)" },
+      { "field": "occupation", "op": "in", "value": ["student"], "label": "Currently a student (after Class 10)" },
+      { "field": "annualIncome", "op": "lte", "value": 250000, "label": "Family income up to ₹2.5 lakh a year" }
+    ],
+    "alsoCheck": [],
+    "documents": ["Aadhaar", "Tribe certificate", "Income certificate", "Previous marksheet"],
+    "applyUrl": "https://scholarships.gov.in"
+  },
+  {
+    "slug": "pm-yasasvi-post-matric",
+    "name": "PM YASASVI Post-Matric Scholarship (OBC, EBC, DNT)",
+    "ministry": "Ministry of Social Justice and Empowerment",
+    "categories": ["education"],
+    "lifeEvents": ["college"],
+    "description": "Post-matric scholarship for OBC, EBC and DNT students from low-income families.",
+    "benefit": { "amount": null, "frequency": "yearly", "summary": "Fees and a yearly academic allowance" },
+    "rules": [
+      { "field": "category", "op": "in", "value": ["obc"], "label": "OBC, EBC or DNT" },
+      { "field": "occupation", "op": "in", "value": ["student"], "label": "Currently a student (after Class 10)" },
+      { "field": "annualIncome", "op": "lte", "value": 250000, "label": "Family income up to ₹2.5 lakh a year" }
+    ],
+    "alsoCheck": [],
+    "documents": ["Aadhaar", "Caste certificate", "Income certificate", "Previous marksheet"],
+    "applyUrl": "https://scholarships.gov.in"
+  },
+  {
+    "slug": "central-sector-scholarship",
+    "name": "Central Sector Scholarship for College Students",
+    "ministry": "Ministry of Education",
+    "categories": ["education"],
+    "lifeEvents": ["college"],
+    "description": "Merit scholarship for students from low- and middle-income families pursuing regular college or university courses.",
+    "benefit": { "amount": 12000, "frequency": "yearly", "summary": "₹12,000/year for graduation, ₹20,000/year for post-graduation" },
+    "rules": [
+      { "field": "occupation", "op": "in", "value": ["student"], "label": "Currently a college student" },
+      { "field": "annualIncome", "op": "lte", "value": 450000, "label": "Family income up to ₹4.5 lakh a year" }
+    ],
+    "alsoCheck": ["Above the 80th percentile in your Class 12 board", "Enrolled in a regular (not distance) course"],
+    "documents": ["Aadhaar", "Class 12 marksheet", "Income certificate", "Bank account"],
+    "applyUrl": "https://scholarships.gov.in"
+  },
+  {
+    "slug": "atal-pension",
+    "name": "Atal Pension Yojana",
+    "ministry": "Ministry of Finance",
+    "categories": ["pension", "finance"],
+    "lifeEvents": ["old_age"],
+    "description": "Guaranteed monthly pension after 60 in return for small monthly contributions while working.",
+    "benefit": { "amount": null, "frequency": null, "summary": "Guaranteed pension of ₹1,000 to ₹5,000 per month after age 60" },
+    "rules": [
+      { "field": "age", "op": "between", "value": [18, 40], "label": "Age 18 to 40 when joining" },
+      { "field": "paysIncomeTax", "op": "eq", "value": false, "label": "Does not pay income tax" }
+    ],
+    "alsoCheck": ["Needs a savings bank account"],
+    "documents": ["Aadhaar", "Savings bank account"],
+    "applyUrl": "https://www.jansuraksha.gov.in"
+  },
+  {
+    "slug": "pmjjby",
+    "name": "Pradhan Mantri Jeevan Jyoti Bima Yojana",
+    "ministry": "Ministry of Finance",
+    "categories": ["insurance", "finance"],
+    "lifeEvents": [],
+    "description": "Low-cost life insurance, renewable every year, auto-debited from the bank account.",
+    "benefit": { "amount": 200000, "frequency": "cover", "summary": "₹2 lakh life cover for ₹436 a year" },
+    "rules": [
+      { "field": "age", "op": "between", "value": [18, 50], "label": "Age 18 to 50" }
+    ],
+    "alsoCheck": ["Needs a savings bank or post office account"],
+    "documents": ["Aadhaar", "Savings bank account"],
+    "applyUrl": "https://www.jansuraksha.gov.in"
+  },
+  {
+    "slug": "pmsby",
+    "name": "Pradhan Mantri Suraksha Bima Yojana",
+    "ministry": "Ministry of Finance",
+    "categories": ["insurance", "finance"],
+    "lifeEvents": [],
+    "description": "Accident insurance covering death or disability, renewable every year.",
+    "benefit": { "amount": 200000, "frequency": "cover", "summary": "₹2 lakh accident cover for ₹20 a year" },
+    "rules": [
+      { "field": "age", "op": "between", "value": [18, 70], "label": "Age 18 to 70" }
+    ],
+    "alsoCheck": ["Needs a savings bank or post office account"],
+    "documents": ["Aadhaar", "Savings bank account"],
+    "applyUrl": "https://www.jansuraksha.gov.in"
+  },
+  {
+    "slug": "pmjdy",
+    "name": "Pradhan Mantri Jan Dhan Yojana",
+    "ministry": "Ministry of Finance",
+    "categories": ["finance"],
+    "lifeEvents": [],
+    "description": "Zero-balance bank account with a RuPay debit card, accident insurance and overdraft facility. The first step for receiving most benefits by direct transfer.",
+    "benefit": { "amount": null, "frequency": null, "summary": "Zero-balance account, RuPay card and accident cover" },
+    "rules": [
+      { "field": "age", "op": "gte", "value": 10, "label": "Age 10 or above" }
+    ],
+    "alsoCheck": [],
+    "documents": ["Aadhaar"],
+    "applyUrl": "https://pmjdy.gov.in"
+  },
+  {
+    "slug": "mgnrega",
+    "name": "Mahatma Gandhi NREGA",
+    "ministry": "Ministry of Rural Development",
+    "categories": ["employment"],
+    "lifeEvents": ["job_loss"],
+    "description": "Guaranteed wage employment for rural households whose adult members are willing to do unskilled manual work.",
+    "benefit": { "amount": null, "frequency": null, "summary": "Up to 100 days of paid work per household per year at the state wage rate" },
+    "rules": [
+      { "field": "area", "op": "eq", "value": "rural", "label": "Lives in a rural area" },
+      { "field": "age", "op": "gte", "value": 18, "label": "Age 18 or above" }
+    ],
+    "alsoCheck": [],
+    "documents": ["Aadhaar", "Passport photo", "Bank account"],
+    "applyUrl": "https://nrega.nic.in"
+  },
+  {
+    "slug": "pm-svanidhi",
+    "name": "PM SVANidhi",
+    "ministry": "Ministry of Housing and Urban Affairs",
+    "categories": ["finance", "employment"],
+    "lifeEvents": ["start_business"],
+    "description": "Collateral-free working-capital loans for street vendors, with interest subsidy and cashback on digital payments.",
+    "benefit": { "amount": null, "frequency": null, "summary": "Collateral-free working-capital loans in increasing tranches" },
+    "rules": [
+      { "field": "occupation", "op": "in", "value": ["street_vendor"], "label": "Works as a street vendor" }
+    ],
+    "alsoCheck": ["Certificate of vending or recommendation from the urban local body"],
+    "documents": ["Aadhaar", "Vending certificate or letter of recommendation", "Bank account"],
+    "applyUrl": "https://pmsvanidhi.mohua.gov.in"
+  },
+  {
+    "slug": "pm-mudra",
+    "name": "Pradhan Mantri Mudra Yojana",
+    "ministry": "Ministry of Finance",
+    "categories": ["finance", "employment"],
+    "lifeEvents": ["start_business", "job_loss"],
+    "description": "Collateral-free loans to start or grow a small non-farm business.",
+    "benefit": { "amount": null, "frequency": null, "summary": "Business loans from Shishu (up to ₹50,000) through Kishore, Tarun and Tarun Plus" },
+    "rules": [
+      { "field": "age", "op": "gte", "value": 18, "label": "Age 18 or above" },
+      { "field": "occupation", "op": "in", "value": ["self_employed", "street_vendor", "artisan", "unemployed"], "label": "Runs or wants to start a small business" }
+    ],
+    "alsoCheck": ["Needs a business plan for the bank"],
+    "documents": ["Aadhaar", "PAN", "Business plan or proof of business", "Bank account"],
+    "applyUrl": "https://www.mudra.org.in"
+  },
+  {
+    "slug": "stand-up-india",
+    "name": "Stand-Up India",
+    "ministry": "Ministry of Finance",
+    "categories": ["finance", "women"],
+    "lifeEvents": ["start_business"],
+    "description": "Bank loans to SC/ST and women entrepreneurs to set up a new enterprise in manufacturing, services, trading or agri-allied activities.",
+    "benefit": { "amount": null, "frequency": null, "summary": "Bank loans between ₹10 lakh and ₹1 crore for a new enterprise" },
+    "rules": [
+      { "field": "age", "op": "gte", "value": 18, "label": "Age 18 or above" },
+      { "field": "occupation", "op": "in", "value": ["self_employed", "artisan", "street_vendor", "unemployed", "homemaker"], "label": "Runs or wants to start a business" },
+      {
+        "anyOf": [
+          { "field": "category", "op": "in", "value": ["sc", "st"], "label": "SC or ST" },
+          { "field": "gender", "op": "eq", "value": "female", "label": "Woman" }
+        ],
+        "label": "SC/ST entrepreneur, or a woman entrepreneur"
+      }
+    ],
+    "alsoCheck": ["The enterprise must be new (greenfield)", "No default with any bank"],
+    "documents": ["Aadhaar", "PAN", "Caste certificate (if SC/ST)", "Project report"],
+    "applyUrl": "https://www.standupmitra.in"
+  },
+  {
+    "slug": "pm-shram-yogi-maandhan",
+    "name": "PM Shram Yogi Maandhan",
+    "ministry": "Ministry of Labour and Employment",
+    "categories": ["pension", "employment"],
+    "lifeEvents": ["old_age"],
+    "description": "Voluntary, contributory pension for unorganised workers. The government matches the worker's monthly contribution.",
+    "benefit": { "amount": null, "frequency": null, "summary": "₹3,000 per month pension after age 60" },
+    "rules": [
+      { "field": "occupation", "op": "in", "value": ["daily_wage", "agri_labourer", "street_vendor", "artisan", "homemaker"], "label": "Unorganised worker" },
+      { "field": "age", "op": "between", "value": [18, 40], "label": "Age 18 to 40 when joining" },
+      { "field": "annualIncome", "op": "lte", "value": 180000, "label": "Income up to ₹15,000 a month" },
+      { "field": "paysIncomeTax", "op": "eq", "value": false, "label": "Does not pay income tax" }
+    ],
+    "alsoCheck": ["Not a member of EPFO, ESIC or NPS"],
+    "documents": ["Aadhaar", "Savings bank account"],
+    "applyUrl": "https://maandhan.in"
+  },
+  {
+    "slug": "pm-vishwakarma",
+    "name": "PM Vishwakarma",
+    "ministry": "Ministry of MSME",
+    "categories": ["employment", "finance"],
+    "lifeEvents": ["start_business"],
+    "description": "Support for traditional artisans and craftspeople: skill training with stipend, toolkit incentive and collateral-free credit.",
+    "benefit": { "amount": 15000, "frequency": "one_time", "summary": "₹15,000 toolkit incentive, ₹500/day training stipend, loans up to ₹3 lakh" },
+    "rules": [
+      { "field": "occupation", "op": "in", "value": ["artisan"], "label": "Traditional artisan or craftsperson" },
+      { "field": "age", "op": "gte", "value": 18, "label": "Age 18 or above" },
+      { "field": "isGovtEmployee", "op": "eq", "value": false, "label": "No family member in government service" }
+    ],
+    "alsoCheck": ["Must work in one of the 18 listed trades", "One member per family"],
+    "documents": ["Aadhaar", "Bank account", "Ration card"],
+    "applyUrl": "https://pmvishwakarma.gov.in"
+  },
+  {
+    "slug": "pm-surya-ghar",
+    "name": "PM Surya Ghar Muft Bijli Yojana",
+    "ministry": "Ministry of New and Renewable Energy",
+    "categories": ["energy", "housing"],
+    "lifeEvents": ["new_house"],
+    "description": "Subsidy for installing rooftop solar on homes, cutting electricity bills.",
+    "benefit": { "amount": 78000, "frequency": "one_time", "summary": "Subsidy up to ₹78,000 for rooftop solar; up to 300 units free per month" },
+    "rules": [
+      { "field": "ownsPuccaHouse", "op": "eq", "value": true, "label": "Owns a house with a suitable roof" }
+    ],
+    "alsoCheck": ["Needs a valid electricity connection in your name", "No earlier solar subsidy on the same house"],
+    "documents": ["Aadhaar", "Electricity bill", "Bank account"],
+    "applyUrl": "https://pmsuryaghar.gov.in"
+  }
+]

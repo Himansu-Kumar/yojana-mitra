@@ -1,0 +1,11 @@
+# Replace the placeholders with your teammates' GitHub usernames (keep the @).
+# The listed owner is automatically asked to review PRs that touch these folders.
+
+*                   @TEAM-LEAD
+/client/            @FRONTEND-OWNER
+/server/            @BACKEND-OWNER
+/server/src/modules/eligibility/  @BACKEND-OWNER @TEAM-LEAD
+/ml-service/        @ML-OWNER-1 @ML-OWNER-2
+/data/              @DATA-OWNER
+/channels/          @DATA-OWNER
+/docs/              @TEAM-LEAD
