@@ -1,5 +1,6 @@
 import { useAuth } from "../auth/AuthContext.jsx";
 import { ButtonLink } from "../../shared/ui/index.jsx";
+import { useDocumentTitle } from "../../shared/lib/useDocumentTitle.js";
 
 const STEPS = [
   ["Tell us about yourself", "A few questions, or scan your Aadhaar or income certificate to fill them in."],
@@ -8,6 +9,7 @@ const STEPS = [
 ];
 
 export default function HomePage() {
+  useDocumentTitle("Home");
   const { user } = useAuth();
 
   return (
@@ -17,6 +19,9 @@ export default function HomePage() {
         <h1 className="mt-2 max-w-3xl text-4xl font-bold leading-tight tracking-tight sm:text-5xl">
           Find the government schemes you're entitled to.
         </h1>
+        <p className="mt-2 text-base font-medium text-brand-700">
+          Every citizen. Every scheme. In their own language.
+        </p>
         <p className="mt-4 max-w-2xl text-lg text-muted">
           Most families miss benefits because the rules are hard to read. Yojana Mitra checks them for you and tells you why
           you qualify, or what's stopping you.

@@ -2,6 +2,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Layout from "./Layout.jsx";
 import { AuthProvider } from "../features/auth/AuthContext.jsx";
 import RequireAuth from "../features/auth/RequireAuth.jsx";
+import RequireRole from "../features/auth/RequireRole.jsx";
 import AuthPage from "../features/auth/AuthPage.jsx";
 import HomePage from "../features/home/HomePage.jsx";
 import ProfilePage from "../features/profile/ProfilePage.jsx";
@@ -9,6 +10,8 @@ import SchemesPage from "../features/schemes/SchemesPage.jsx";
 import SchemeDetailPage from "../features/schemes/SchemeDetailPage.jsx";
 import BenefitsPage from "../features/eligibility/BenefitsPage.jsx";
 import AssistantPage from "../features/assistant/AssistantPage.jsx";
+import AdminSchemesPage from "../features/admin/AdminSchemesPage.jsx";
+import AdminSchemeEditPage from "../features/admin/AdminSchemeEditPage.jsx";
 
 const NotFound = () => <p className="text-muted">Page not found.</p>;
 
@@ -26,6 +29,36 @@ export default function App() {
             <Route path="benefits" element={<RequireAuth><BenefitsPage /></RequireAuth>} />
             <Route path="profile" element={<RequireAuth><ProfilePage /></RequireAuth>} />
             <Route path="assistant" element={<RequireAuth><AssistantPage /></RequireAuth>} />
+            <Route
+              path="admin/schemes"
+              element={
+                <RequireAuth>
+                  <RequireRole roles={["official"]}>
+                    <AdminSchemesPage />
+                  </RequireRole>
+                </RequireAuth>
+              }
+            />
+            <Route
+              path="admin/schemes/new"
+              element={
+                <RequireAuth>
+                  <RequireRole roles={["official"]}>
+                    <AdminSchemeEditPage />
+                  </RequireRole>
+                </RequireAuth>
+              }
+            />
+            <Route
+              path="admin/schemes/:slug"
+              element={
+                <RequireAuth>
+                  <RequireRole roles={["official"]}>
+                    <AdminSchemeEditPage />
+                  </RequireRole>
+                </RequireAuth>
+              }
+            />
             <Route path="*" element={<NotFound />} />
           </Route>
         </Routes>

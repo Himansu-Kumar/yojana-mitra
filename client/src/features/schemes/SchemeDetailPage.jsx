@@ -6,6 +6,7 @@ import { useAuth } from "../auth/AuthContext.jsx";
 import StatusBadge from "../eligibility/StatusBadge.jsx";
 import ConditionList from "../eligibility/ConditionList.jsx";
 import { Button, ButtonLink, Card, ErrorNote, Spinner } from "../../shared/ui/index.jsx";
+import { useDocumentTitle } from "../../shared/lib/useDocumentTitle.js";
 
 export default function SchemeDetailPage() {
   const { slug } = useParams();
@@ -13,6 +14,8 @@ export default function SchemeDetailPage() {
   const [scheme, setScheme] = useState(null);
   const [result, setResult] = useState(null);
   const [error, setError] = useState(null);
+
+  useDocumentTitle(scheme?.name || "Scheme details");
 
   useEffect(() => {
     setScheme(null);
@@ -31,7 +34,17 @@ export default function SchemeDetailPage() {
           ← All schemes
         </Link>
         <h1 className="mt-2 text-2xl font-bold tracking-tight sm:text-3xl">{scheme.name}</h1>
-        <p className="mt-1 text-sm text-muted">{scheme.ministry}</p>
+        <p className="mt-1 text-sm text-muted">
+          {scheme.ministry}
+          {scheme.state && scheme.state !== "all" && <> · State: {scheme.state}</>}
+        </p>
+        <p className="mt-1 text-xs">
+          {scheme.lastVerified ? (
+            <span className="text-muted">Last checked: {new Date(scheme.lastVerified).toLocaleDateString()}</span>
+          ) : (
+            <span className="text-amber-700">Not yet verified against the official portal</span>
+          )}
+        </p>
 
         <Card className="mt-5 p-5">
           <p className="text-xs font-semibold uppercase tracking-wide text-muted">Benefit</p>

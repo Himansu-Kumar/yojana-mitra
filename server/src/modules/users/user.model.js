@@ -33,6 +33,10 @@ const userSchema = new mongoose.Schema(
     email: { type: String, required: true, unique: true, lowercase: true, trim: true },
     passwordHash: { type: String, required: true },
     role: { type: String, enum: ["citizen", "ngo", "official"], default: "citizen" },
+    consent: {
+      documentsAt: Date,
+      version: String,
+    },
     profile: { type: profileSchema, default: () => ({}) },
   },
   { timestamps: true }
@@ -44,6 +48,7 @@ userSchema.methods.toPublic = function toPublic() {
     name: this.name,
     email: this.email,
     role: this.role,
+    consent: this.consent?.toObject ? this.consent.toObject() : this.consent || {},
     profile: this.profile?.toObject ? this.profile.toObject() : this.profile || {},
   };
 };

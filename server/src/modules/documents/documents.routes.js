@@ -1,7 +1,7 @@
 import { Router } from "express";
 import multer from "multer";
 import { requireAuth } from "../../middleware/auth.js";
-import { badRequest } from "../../utils/httpError.js";
+import { badRequest, forbidden } from "../../utils/httpError.js";
 import { extractProfileFromDocument } from "./documents.service.js";
 
 const ALLOWED = ["image/jpeg", "image/png", "image/webp", "application/pdf"];
@@ -19,6 +19,9 @@ export const documentsRouter = Router();
 // Reads a document and returns suggested profile values. Does NOT save anything:
 // the user reviews the suggestions and saves them through PUT /api/profile.
 documentsRouter.post("/extract", requireAuth, upload.single("file"), async (req, res) => {
+  if (!req.user.consent?.documentsAt) {
+    throw forbidden("Please agree to document processing first");
+  }
   if (!req.file) throw badRequest("Attach a file in the 'file' field");
   res.json(await extractProfileFromDocument(req.file));
 });

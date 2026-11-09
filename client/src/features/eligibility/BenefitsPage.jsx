@@ -4,6 +4,7 @@ import BenefitWallet from "./BenefitWallet.jsx";
 import ResultCard from "./ResultCard.jsx";
 import { ButtonLink, ErrorNote, PageHeader, Spinner } from "../../shared/ui/index.jsx";
 import { FIELD_LABELS } from "../profile/profileFields.js";
+import { useDocumentTitle } from "../../shared/lib/useDocumentTitle.js";
 
 const SECTIONS = [
   { key: "eligible", title: "You qualify", empty: "No matches yet. Fill in more of your profile." },
@@ -13,6 +14,7 @@ const SECTIONS = [
 ];
 
 export default function BenefitsPage() {
+  useDocumentTitle("My benefits");
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
   const [showNot, setShowNot] = useState(false);

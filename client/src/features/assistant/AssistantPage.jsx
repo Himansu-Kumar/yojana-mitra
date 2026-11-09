@@ -4,6 +4,7 @@ import { assistantApi } from "./api.js";
 import { useSpeech } from "./useSpeech.js";
 import { useAuth } from "../auth/AuthContext.jsx";
 import { Button, ErrorNote, PageHeader } from "../../shared/ui/index.jsx";
+import { useDocumentTitle } from "../../shared/lib/useDocumentTitle.js";
 
 const TEXT = {
   en: {
@@ -29,6 +30,7 @@ const TEXT = {
 };
 
 export default function AssistantPage() {
+  useDocumentTitle("Ask Mitra");
   const { user } = useAuth();
   const [params] = useSearchParams();
   const [language, setLanguage] = useState(user?.profile?.preferredLanguage === "hi" ? "hi" : "en");

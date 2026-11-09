@@ -6,10 +6,13 @@ const schemeSchema = new mongoose.Schema(
     slug: { type: String, required: true, unique: true, lowercase: true, trim: true },
     name: { type: String, required: true },
     ministry: String,
+    level: { type: String, enum: ["central", "state"], default: "central" },
     state: { type: String, default: "all" }, // "all" = central scheme
     categories: [String],
     lifeEvents: [String],
     description: String,
+    eligibilityText: String, // original wording; input for the M2 rule extractor
+    sourceUrl: String, // where the data came from (myScheme page, state portal)
     benefit: {
       amount: { type: Number, default: null },
       frequency: { type: String, enum: [...BENEFIT_FREQUENCIES, null], default: null },
@@ -21,7 +24,9 @@ const schemeSchema = new mongoose.Schema(
     alsoCheck: [String],
     documents: [String],
     applyUrl: String,
+    deadline: Date, // optional application deadline
     lastVerified: Date,
+    isActive: { type: Boolean, default: true },
   },
   { timestamps: true }
 );

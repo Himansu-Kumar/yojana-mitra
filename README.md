@@ -29,6 +29,15 @@ npm run dev
 ```
 Open http://localhost:5173 and use one of the demo accounts on the sign-in page (password `demo1234`).
 
+### Demo accounts (password: `demo1234`)
+| Role | Email | Profile |
+|---|---|---|
+| Citizen | `sunita@demo.yojanamitra.in` | Sunita, 34, farm labourer in Odisha, expecting a baby |
+| Citizen | `ravi@demo.yojanamitra.in` | Ravi, 19, SC student in Bihar, income just over a limit |
+| Citizen | `ramesh@demo.yojanamitra.in` | Ramesh, 38, small farmer in Gujarat |
+| Official | `official@demo.yojanamitra.in` | District Officer, Khordha, Odisha (Admin access) |
+| CSC Worker (NGO) | `ngo@demo.yojanamitra.in` | CSC Worker, Khordha, Odisha |
+
 With no `server/.env`, the server uses a **temporary in-memory database** and loads the schemes and demo users automatically. The very first start downloads a MongoDB binary (~600 MB, one time only), so give it a few minutes. To keep data, copy `server/.env.example` to `server/.env` and set `MONGO_URI` to your MongoDB Atlas string, then run `npm run seed`.
 
 ### AI features (document reading + assistant)

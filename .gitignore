@@ -9,6 +9,8 @@ __pycache__/
 dist/
 build/
 .pytest_cache/
+client/.vite/
+.vite/
 
 # env / secrets
 .env

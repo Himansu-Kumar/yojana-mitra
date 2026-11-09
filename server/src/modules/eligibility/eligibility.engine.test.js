@@ -91,3 +91,22 @@ test("profileToFacts derives age from date of birth and drops empty values", () 
   assert.equal(facts.gender, "female");
   assert.equal("state" in facts, false);
 });
+
+test("state-aware eligibility: state scheme passes for matching state, fails for another, needs_info when missing", () => {
+  const stateScheme = {
+    slug: "odisha-scheme",
+    state: "Odisha",
+    rules: [{ field: "annualIncome", op: "lte", value: 100000, label: "Income up to ₹1 lakh" }],
+  };
+
+  const matching = evaluateScheme(stateScheme, { state: "Odisha", annualIncome: 80000 });
+  assert.equal(matching.status, STATUS.ELIGIBLE);
+
+  const differentState = evaluateScheme(stateScheme, { state: "Bihar", annualIncome: 80000 });
+  assert.equal(differentState.status, STATUS.NOT_ELIGIBLE);
+  assert.equal(differentState.summary, "Required: Lives in Odisha");
+
+  const missingState = evaluateScheme(stateScheme, { annualIncome: 80000 });
+  assert.equal(missingState.status, STATUS.NEEDS_INFO);
+  assert.deepEqual(missingState.missingFields, ["state"]);
+});
