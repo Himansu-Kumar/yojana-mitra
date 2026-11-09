@@ -5,6 +5,7 @@ import { profileApi } from "./api.js";
 import { BOOLEAN_FIELDS, FIELD_LABELS, OPTIONS, STATES } from "./profileFields.js";
 import DocumentScanner from "../documents/DocumentScanner.jsx";
 import { Button, Card, ErrorNote, Field, Input, PageHeader, Select } from "../../shared/ui/index.jsx";
+import { useDocumentTitle } from "../../shared/lib/useDocumentTitle.js";
 
 const NUMBER_FIELDS = ["annualIncome", "landHoldingAcres"];
 
@@ -58,6 +59,7 @@ function YesNo({ value, onChange, name }) {
 }
 
 export default function ProfilePage() {
+  useDocumentTitle("Profile");
   const { user, setUser } = useAuth();
   const [form, setForm] = useState(() => toForm(user));
   const [filledByScan, setFilledByScan] = useState([]);

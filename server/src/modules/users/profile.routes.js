@@ -23,3 +23,14 @@ profileRouter.put("/", validate(profileUpdateSchema), async (req, res) => {
   await req.user.save();
   res.json({ user: req.user.toPublic(), facts: profileToFacts(req.user.profile) });
 });
+
+profileRouter.post("/consent", async (req, res) => {
+  const { scope } = req.body || {};
+  if (scope === "documents") {
+    req.user.consent = req.user.consent || {};
+    req.user.consent.documentsAt = new Date();
+    req.user.consent.version = "2026-11";
+    await req.user.save();
+  }
+  res.json({ user: req.user.toPublic() });
+});

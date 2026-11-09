@@ -115,7 +115,12 @@ export function evaluateRule(rule, facts) {
 
 /** Evaluates a scheme for a person. */
 export function evaluateScheme(scheme, facts) {
-  const checks = (scheme.rules || []).map((r) => evaluateRule(r, facts));
+  const stateRule =
+    scheme.state && scheme.state !== "all"
+      ? { field: "state", op: "in", value: [].concat(scheme.state), label: `Lives in ${[].concat(scheme.state).join(" or ")}` }
+      : null;
+  const rules = stateRule ? [stateRule, ...(scheme.rules || [])] : scheme.rules || [];
+  const checks = rules.map((r) => evaluateRule(r, facts));
   const fails = checks.filter((c) => c.status === "fail");
   const unknowns = checks.filter((c) => c.status === "unknown");
   const missingFields = [...new Set(unknowns.flatMap((u) => u.fields || []))];

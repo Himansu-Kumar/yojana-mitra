@@ -7,12 +7,13 @@ const NAV = [
   { to: "/schemes", label: "All schemes" },
   { to: "/assistant", label: "Ask Mitra", auth: true },
   { to: "/profile", label: "Profile", auth: true },
+  { to: "/admin/schemes", label: "Admin", auth: true, roles: ["official"] },
 ];
 
 export default function Layout() {
   const { user, logout } = useAuth();
   const [open, setOpen] = useState(false);
-  const items = NAV.filter((n) => !n.auth || user);
+  const items = NAV.filter((n) => (!n.auth || user) && (!n.roles || n.roles.includes(user?.role)));
 
   const linkCls = ({ isActive }) =>
     `rounded-md px-3 py-2 text-sm font-medium ${isActive ? "bg-brand-50 text-brand-700" : "text-ink hover:bg-stone-100"}`;

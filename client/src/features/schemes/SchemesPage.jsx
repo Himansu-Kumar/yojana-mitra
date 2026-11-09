@@ -6,6 +6,7 @@ import { useAuth } from "../auth/AuthContext.jsx";
 import StatusBadge from "../eligibility/StatusBadge.jsx";
 import { Card, ErrorNote, Input, PageHeader, Spinner } from "../../shared/ui/index.jsx";
 import { titleCase } from "../../shared/lib/format.js";
+import { useDocumentTitle } from "../../shared/lib/useDocumentTitle.js";
 
 const LIFE_EVENT_LABELS = {
   pregnancy: "Expecting a baby",
@@ -22,6 +23,7 @@ const LIFE_EVENT_LABELS = {
 };
 
 export default function SchemesPage() {
+  useDocumentTitle("All schemes");
   const { user } = useAuth();
   const [params, setParams] = useSearchParams();
   const [meta, setMeta] = useState({ categories: [], lifeEvents: [] });

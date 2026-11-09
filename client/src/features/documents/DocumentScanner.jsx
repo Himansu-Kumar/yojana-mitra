@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import { documentsApi } from "./api.js";
+import { profileApi } from "../profile/api.js";
+import { useAuth } from "../auth/AuthContext.jsx";
 import { Button, Card, ErrorNote } from "../../shared/ui/index.jsx";
 import { FIELD_LABELS, OPTIONS } from "../profile/profileFields.js";
 import { formatINR, titleCase } from "../../shared/lib/format.js";
@@ -21,6 +23,8 @@ function showValue(key, value) {
 
 /** Upload or photograph a document; shows what was read; user confirms before it fills the form. */
 export default function DocumentScanner({ onApply }) {
+  const { user, setUser } = useAuth();
+  const [consenting, setConsenting] = useState(false);
   const [file, setFile] = useState(null);
   const [preview, setPreview] = useState(null);
   const [result, setResult] = useState(null);
@@ -32,6 +36,36 @@ export default function DocumentScanner({ onApply }) {
       if (preview) URL.revokeObjectURL(preview);
     };
   }, [preview]);
+
+  async function handleConsent() {
+    setConsenting(true);
+    setError(null);
+    try {
+      const res = await profileApi.consent({ scope: "documents" });
+      if (res.user) setUser(res.user);
+    } catch (err) {
+      setError(err);
+    } finally {
+      setConsenting(false);
+    }
+  }
+
+  if (!user?.consent?.documentsAt) {
+    return (
+      <Card className="p-5">
+        <h2 className="font-semibold">Document processing consent</h2>
+        <p className="mt-2 text-sm text-muted">
+          We read your document to fill your profile. We keep only the last 4 digits of any ID number. Nothing is shared with the government.
+        </p>
+        <div className="mt-3">
+          <ErrorNote error={error} />
+        </div>
+        <Button className="mt-4 w-full" onClick={handleConsent} disabled={consenting}>
+          {consenting ? "Saving consent…" : "I agree"}
+        </Button>
+      </Card>
+    );
+  }
 
   function pick(e) {
     const f = e.target.files?.[0];

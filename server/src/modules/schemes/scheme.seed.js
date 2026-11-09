@@ -83,6 +83,24 @@ const DEMO_USERS = [
       isGovtEmployee: false,
     },
   },
+  {
+    name: "District Officer (Demo)",
+    email: "official@demo.yojanamitra.in",
+    role: "official",
+    profile: {
+      state: "Odisha",
+      district: "Khordha",
+    },
+  },
+  {
+    name: "CSC Worker (Demo)",
+    email: "ngo@demo.yojanamitra.in",
+    role: "ngo",
+    profile: {
+      state: "Odisha",
+      district: "Khordha",
+    },
+  },
 ];
 
 export async function seedDemoUsers() {
