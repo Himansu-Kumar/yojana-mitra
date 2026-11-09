@@ -1,0 +1,14 @@
+fastapi>=0.115
+uvicorn[standard]>=0.32
+python-multipart>=0.0.18
+pydantic>=2.12
+pydantic-settings>=2.6
+google-genai>=1.0
+pillow>=11.0
+
+# optional offline OCR fallback (also needs the Tesseract program installed on the machine)
+# pytesseract>=0.3.13
+
+# dev / tests
+pytest>=8.3
+httpx>=0.28
